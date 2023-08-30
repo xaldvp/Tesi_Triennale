@@ -34,7 +34,7 @@ Infine sono state valutate le performance del modello (MCC) su un dataset divers
 È stato fatto un grafico per comparare l'MCC sul test set originale e l'MCC su all3.
 
 ## Bozza Conclusioni
-With/Without Unreliable Features
+### With/Without Unreliable Features
 
 
 XGB= grande differenza (18 punti)  
@@ -54,34 +54,38 @@ Commento: sono molte features, io ho guardato le prime 20 ma noto che massimo do
 
 
 
-MCC
+### MCC
 
-Shuf=True/False Win=5
+Shuf=True/False Win=5:
 La tendenza è la stessa (TS-Diff,TS-MA,Classic)
 MCC migliore in Shuf=true, ma quasi identico nel caso di TS-Diff soprattutto nei modelli basati su alberi.
 
-Win=5 Win=4 (shuf=false)
+
+Win=5 Win=4 (shuf=false):
 Pressoché identici i valori di MCC, peggiorano soprattutto i modelli TS-MA
 
-Win=4 Win=3 (shuf=false)
+
+Win=4 Win=3 (shuf=false):
 Pressoché identici i valori di MCC. Inversione di tendenza nel modello LDA, ovvero —> TS-MA,TS-Diff,Classic
 
-Win=3 Win=2 (shuf=false)
+
+Win=3 Win=2 (shuf=false):
 Pressoché identici i valori di MCC. Ritorno alla tendenza di fondo per LDA, ovvero —> TS-Diff, TS-MA, Classic
 
 
 
 
-MCC Comparison Uni-All3
+### MCC Comparison Uni-All3
 
 Con Shuf=True si ha che tendenzialmente i modelli performano meglio sul test set di Uni.
+
 
 Con Shuf=False i modelli hanno performance simili sia sul test set di Uni che su All3, ma spesso sono migliori sul set Uni (forse perche parzialmente i dati di All3 sono anche dati di training dei modelli trainati su Uni)
 
 
 
 
-SPEED 
+### SPEED 
 
 Non grandi differenze nei valori di score. La tendenza nei modelli basati su alberi rimane sempre la stessa TS-Diff, TS-MA, Classic. Nei modelli lineari in win2 c’è un’inversione di tendenza, mentre in win4 e win5 solo per i modelli LDA.
 
