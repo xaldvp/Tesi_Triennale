@@ -34,11 +34,21 @@ Infine sono state valutate le performance del modello (MCC) su un dataset divers
 È stato fatto un grafico per comparare l'MCC sul test set originale e l'MCC su all3.
 
 ## Bozza Conclusioni
-With/Without Unreliable Features  
+With/Without Unreliable Features
+
+
 XGB= grande differenza (18 punti)  
+
+
 Logistic= non grande differenza (6 punti)  
-Random Forest= pressoché nessuna differenza, le features sono molto simili cambia un po’ l’ordine  
+
+
+Random Forest= pressoché nessuna differenza, le features sono molto simili cambia un po’ l’ordine 
+
+
 LDA= grande differenza (14 punti)  
+
+
 
 Commento: sono molte features, io ho guardato le prime 20 ma noto che massimo dopo le prime 5 c’è un andamento asintotico dell’importanza delle features \n
 
