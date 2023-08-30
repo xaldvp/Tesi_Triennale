@@ -1,0 +1,13 @@
+csv_note,speed_0,speed_1,speed_2,speed_3,speed_4
+Logistic Regression Classic,192,32,27,20,20
+XGB Classic,595,33,17,15,10
+Random Forest Classic,446,68,46,31,27
+LDA Classic,494,19,14,20,16
+Logistic Regression TS Diff,449,53,56,14,19
+XGB TS Diff,700,28,2,1,1
+Random Forest TS Diff,681,44,5,1,1
+LDA TS Diff,286,32,13,9,1
+Logistic Regression TS MA,383,53,46,37,28
+XGB TS MA,524,79,39,21,21
+Random Forest TS MA,438,68,44,26,24
+LDA TS MA,663,38,19,9,0
