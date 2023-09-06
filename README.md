@@ -55,7 +55,7 @@ Commento: sono molte features, io ho guardato le prime 20 ma noto che massimo do
 
 
 ### MCC & Error Rate
-Shuffle=True/False: i valori di MCC e Error Rate sono di gran lunga migliori per shuffle=True, soprattutto negli approcci Classic e TS-MA.
+Shuffle=True/False: i valori di MCC e Error Rate sono di gran lunga migliori per shuffle=True, soprattutto negli approcci Classic e TS-MA ci sono le maggiori differenze.
 
 Con shuffle=False:
 
