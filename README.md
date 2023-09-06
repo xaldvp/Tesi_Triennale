@@ -78,10 +78,10 @@ ATTENZIONE: grande modifica rispetto all'altra volta.
 
 Cambiando il dataset All3 (escludendo quindi i dati X_train usati per addestrare i modelli su Uni) i modelli si dimostrano molto meno robusti su All3, come effettivamente ci saremmo potuti aspettare. La scorsa volta alcune volte l'MCC sul dataset All3 era maggiore che su quello di Uni. Con la modifica sul dataset All3 l'andamento è chiaro: meno robustezza dei modelli su All3 rispetto ad Uni. Cosa importante è che l'andamento dell'MCC è sempre lo stesso, in ordine crescente: Classic, TS-MA, TS-Diff.
 
-### MCC Comparison With/Without Unreliable su All3:
+### MCC Comparison With/Without Unreliable su All3
 Fatto solo per i modelli classic. A parte per Random Forest, in cui i valori di MCC con o senza feature inaffidabili non cambia, i valori di MCC sono sempre più alti nei modelli addestrati senza feature inaffidabili.
 
 
-### SPEED 
+### Speed Score
 Tra i modelli con shuffle=False con finestre temporali differenti non ci sono grandi differenze nei valori di score. La tendenza di base segue quella dell'MCC, in ordine crescente: Classic, TS-MA, TS-Diff. Piccola eccezione il modello LDA ha una tendenza diversa e anche la Logistic Regression con win=2.
 
