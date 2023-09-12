@@ -3,11 +3,11 @@ Logistic Regression Classic,192,32,27,20,20
 XGB Classic,595,33,17,15,10
 Random Forest Classic,446,68,46,31,27
 LDA Classic,494,19,14,20,16
-Logistic Regression TS Diff,442,52,46,17,18
-XGB TS Diff,700,27,3,1,1
-Random Forest TS Diff,666,45,16,3,2
-LDA TS Diff,288,30,15,7,1
 Logistic Regression TS MA,340,57,43,38,29
 XGB TS MA,596,46,16,11,12
 Random Forest TS MA,447,71,38,29,26
 LDA TS MA,668,41,13,7,1
+Logistic Regression TS Diff,442,52,46,17,18
+XGB TS Diff,700,27,3,1,1
+Random Forest TS Diff,666,45,16,3,2
+LDA TS Diff,288,30,15,7,1

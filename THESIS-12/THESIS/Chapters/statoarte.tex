@@ -1,0 +1,206 @@
+\chapter{Stato dell'Arte}
+
+\medskip
+
+\section{Machine Learning}
+
+Il Machine Learning (ML) \`e una sottodisciplina dell'intelligenza artificiale che \`e nata nel corso degli ultimi decenni del XX secolo. Nel campo dell'informatica, l'apprendimento automatico \`e un'alternativa alla programmazione tradizionale, in cui a una macchina viene data l'abilit\`a di imparare autonomamente dai dati, senza richiedere istruzioni esplicite \cite{book_ML}. 
+I metodi principali per l'apprendimento automatico sono due \cite{ML_sup_unsup}:
+
+\begin{itemize}
+
+  \item \textbf{Apprendimento Supervisionato}: vengono utilizzati dati etichettati per effettuare il training del modello di ML. Nel set di dati \`e quindi associata un'etichetta ad ogni osservazione, ovvero ad un insieme di features, e il compito del modello sar\`a associare l'etichetta corretta all'insieme di features in arrivo.
+  
+  \item \textbf{Apprendimento Non Supervisionato}: vengono utilizzati dati non etichettati durante l'addestramento. Non viene resa esplicita quindi nessuna relazione tra i dati, sar\`a l'algoritmo ad estrarre le informazioni necessarie a classificare o predire i risultati attesi tramite tecniche di clustering.
+    
+\end{itemize}
+
+Nel nostro caso, abbiamo utilizzato l'apprendimento supervisionato avendo a disposizione dei set di dati etichettati.
+Esistono principalmente due compiti dell'apprendimento automatico supervisionato\cite{wiki_ML}:
+\begin{itemize}
+
+  \item \textbf{Classificazione}: un algoritmo (classificatore) \`e addestrato a classificare i dati di input su variabili discrete. Durante il processo di training questi algoritmi vengono esposti a dati di input, a ognuno dei quali \`e associata un'etichetta di classe e dovranno essere in grado, una volta addestrati, di restituire la classe di appartenenza di nuovi input forniti al modello.
+  
+  \item \textbf{Regressione}: un algoritmo (regressore) ha come scopo quello di individuare una relazione funzionale tra i dati di input e l'output. Il valore di output non \`e discreto come nella classificazione, ma \`e continuo.
+    
+\end{itemize}
+
+
+\subsection{Algoritmi utilizzati}
+Gli algortitmi utilizzati nel presente lavoro di tesi sono tutti classificatori, avendo preso come caso di studio un problema di classificazione, in particolare un problema di classificazione binaria. Sono stati utilizzati in totale 4 algoritmi di classificazione, 2 per ciascuna classe di modelli:
+
+\begin{itemize}
+
+  \item \textbf{Modelli Statistici}: Logistic Regression, Linear Discriminant Analysis
+  
+  \item \textbf{Modelli basati su Alberi Decisionali}: Random Forest, XGBoost
+    
+\end{itemize}
+
+
+\subsubsection{Modelli Statistici}
+La \textbf{Logistic Regression (regressione logistica)} \`e uno dei modelli statistici pi\`u utilizzati nell'ambito del ML. Per regressione logistica si intende l'analisi di regressione che si conduce quando la variabile dipendente \`e binaria, ad esempio anomalia rilevata o non rilevata \cite{lr_rf}. Il modello di regressione logistica pu\`o essere utilizzato per trovare la relazione tra una variabile binaria dipendente Y e una o pi\`u variabili indipendenti $X_{i}$. La Logistic Regression si compone delle seguenti variabili:
+\begin{itemize}
+
+  \item \textbf{Y, variabile dipendente binaria}: assume valore 0 quando l'evento non si verifica (anomalia non rilevata) e valore 1 quando l'evento si verifica (anomalia rilevata).
+  
+  \item \textbf{$X_{i}$, variabili indipendenti o regressori}: queste possono essere di qualsiasi natura, qualitative o quantitative e influenzano la variabile risposta Y.
+    
+\end{itemize}
+
+\vspace{0.5cm}
+
+Il modello da stimare \`e dato dall'espressione\cite{lr}:
+\begin{equation}
+P(Y=1 | X_1,...X_n) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \ldots + \beta_n X_n)}}
+\end{equation}
+
+Dove i coefficienti $\beta_0, \beta_1, \beta_2, \ldots, \beta_n$ sono i coefficienti di regressione
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Logistic Regression.png}
+    \caption{Logistic Regression}
+    \label{fig:logistic_regression}
+\end{figure}
+
+\vspace{1.5cm}
+
+L'altro modello statistico utilizzato \`e stato la \textbf{Linear Discriminant Analysis (LDA)}. Questo modello, cerca di trovare una combinazione lineare di features che separino al meglio le classi nel dataset. La LDA funziona proiettando i dati su uno spazio a minore  dimensionalit\`a che massimizza la separazione tra le classi. Ci\`o avviene trovando un insieme di discriminanti lineari che massimizzano il rapporto tra la varianza inter-classe e la varianza intra-classe \cite{lda}. In altre parole, trova le direzioni nello spazio delle features che meglio separano le diverse classi di dati, nel nostro caso anomalia rilveata o non rilevata.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{LDA2.png}
+    \caption{Linear Discriminant Analysis}
+    \label{fig:lda}
+\end{figure}
+
+\subsubsection{{Modelli basati su Alberi Decisionali}}
+I modelli non statistici utilizzati sono entrambi basati sugli alberi decisionali, quindi prima di definire i singoli modelli, procederemo con un'introduzione su cosa sono gli alberi decisionali. Un \textbf{Albero Decisionale (DT)} \`e un algoritmo ampiamente utilizzato nell'apprendimento supervisionato, adatto sia per attivit\`a di classificazione che per problemi di regressione. Questo modello adotta una struttura ad albero gerarchica, caratterizzata da un nodo radice, rami, nodi interni e nodi foglia\cite{dt}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{DT.png}
+    \caption{Schema Albero Decisionale}
+    \label{fig:enter-label}
+\end{figure}
+
+\vspace{1cm}
+
+Come rappresentato nel diagramma soprastante, un Albero Decisionale inizia con un nodo radice, che \`e contraddistinto dalla mancanza di rami in ingresso. I rami che si dipartono dal nodo radice alimentano i nodi interni, noti anche come nodi decisionali.  Sia il nodo radice che i nodi decisionali contribuiscono nella creazione di sottoinsiemi omogenei all'interno del dataset, in particolare, i nodi foglia rappresentano tutte le possibili previsioni o risultati nel set di dati. 
+Il training dell'albero decisionale utilizza una strategia "dividi et impera" per cercare i punti di suddivisione ottimali all'interno di un albero.
+Vediamo nella figura sottostante un diagramma, molto semplice e a titolo di esempio, di un albero decisionale per determinare la presenza o meno di un'anomalia all'interno di un calcolatore. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Esempio DT.png}
+    \caption{Esempio Albero Decisionale}
+    \label{fig:enter-label}
+\end{figure}
+
+\vspace{1cm}
+
+Nel nostro caso non abbiamo usato direttamente degli alberi decisionali, ma dei modelli basati su di essi. L'algoritmo \textbf{Random Forest (RF)} \`e un classificatore d'insieme basato su alberi decisionali, ovvero \`e costituito da un insieme di classificatori, in questo caso DT, e le loro previsioni vengono aggregate per identificare il risultato pi\`u diffuso \cite{rf}.
+In particolare, l'algoritmo RF utilizza una tecnica dell'apprendimento d'insieme, chiamata bagging, in cui pi\`u DT vengono addestrati su insiemi di dati diversi, ciascuno ottenuto dal dataset di addestramento iniziale. La casualit\`a delle caratteristiche su cui vengono addestrati i singoli alberi della foresta garantisce una bassa correlazione tra le singole strutture ad albero, riducendo cos\`i uno dei maggiori problemi degli alberi decisionali, l'overfitting. 
+L'overfitting \`e un problema che si verifica quando un modello si adatta esattamente ai suoi dati di addestramento. Quando questo accade, l'algoritmo non funziona correttamente in presenza di dati non osservati in precedenza e non \`e quindi in grado di generalizzare, risultando inutile.
+Possiamo schematizzare il comportamento dell'algoritmo Random Forest nella figura seguente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{RF Diagramma.png}
+    \caption{Schema Random Forest}
+    \label{fig:enter-label}
+\end{figure}
+
+Nel nostro caso, ovvero nel caso della classificazione, il risultato del modello corrisponder\`a al voto di maggioranza dei singoli alberi sulla classe prevista.
+
+\vspace{1.7cm}
+
+L'altro algoritmo basato su alberi decisionali utlizzato nel presente lavoro di Tesi \`e \textbf{XGBoost}, il cui nome completo \`e Extreme Gradient Boosting. Solitamente l'approccio pi\`u frequente quando si costruiscono dei modelli predittivi \`e addestrare un singolo modello forte. Un approccio differente potrebbe essere quello di costruire un insieme di modelli deboli che combinati costruiscano una previsione d'insieme forte. Quest'ultima idea \`e alla base di tutti gli algoritmi di ensemble learning, quindi anche di XGBoost e Random Forest \cite{gradient_boost}.
+Come si deduce dal nome dell'algoritmo, XGBoost \`e basato sul boosting, ovvero un metodo di apprendimento d'insieme, proprio come lo \`e il bagging per Random Forest. Il boosting combina una serie di modelli deboli che vanno a formare un modello forte per ridurre al minimo gli errori di addestramento \cite{xgb}. Nel boosting, viene effettuata una selezione casuale dal set di dati e il modello viene addestrato in modo sequenziale, ovvero ogni modello successivo nella sequenza cerca di migliorare rispetto al precedente. I modelli deboli, che non sono nient'altro che alberi decisionali, vengono combinati per ottenere una previsione d'insieme forte. La differenza principale con la tecnica di bagging utilizzata da Random Forest \`e che nel bagging i modelli deboli sono addestrati in parallelo, mentre nel boosting apprendono in sequenza. Il miglioramento dei modelli durante l'apprendimento sequenziale avviene grazie all'algoritmo di discesa del gradiente (notare il termine \textit{Gradient} in  \textit{Extreme Gradient Boosting}), ovvero un algoritmo di ottimizzazione molto utilizzato nel ML.
+XGBoost (Extreme Gradient Boosting) \`e un'implementazione di Gradient Boosting, nome utilizzato poich\'e combina l'algoritmo di discesa del gradiente e il metodo di boosting, progettata per velocit\`a e scalabilit\`a.
+
+
+\subsection{Metriche di valutazione}
+In questa sezione illustriamo le metriche di valutazione utilizzate per valutare le performance dei modelli. Prima di menzionare le singole metriche, \`e necessario introdurre il concetto di \textit{confusion matrix (matrice di confusione)}. La matrice di confusione \`e una matrice utilizzata per valutare le prestazioni di un algoritmo di ML, che pu\`o essere cos\`i schematizzata \cite{mcc}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{confusion_matrix.png}
+    \caption{Confusion Matrix}
+    \label{fig:enter-label}
+\end{figure}
+
+Ora che abbiamo introdotto la confusion matrix possiamo meglio definire le metriche di valutazione. In totale sono state utilizzate 4 metriche di valutazione:
+
+\begin{itemize}
+
+  \item \textbf{Accuracy (ACC)}: il valore \`e dato dal numero delle classificazioni corrette diviso il numero totale di classificazioni. Formalmente, guardando alla confusion matrix, il valore \`e dato da:
+
+  \begin{equation}
+    ACC = \frac{TP + TN}{P + N}
+  \end{equation}
+  
+  \item \textbf{Error Rate (1-ACC)}: il valore \`e dato dalla differenza tra 1 e l'Accuracy, ovvero $1-ACC$
+  
+  \item \textbf{Matthews correlation coefficient (MCC)}: questa metrica di valutazione, rispetto alle precedenti, \`e sicuramente la pi\`u robusta per valutare le performance dei modelli. Questo perch\'e, a differenza dell'accuracy, questa metrica non \`e affetta dal problema degli \textit{unbalanced datasets (set di dati sbilanciati)}, ma torneremo su questo problema tra poco. Guardando alla matrice di confusione il valore dell'MCC \`e dato da:
+  
+  \begin{equation}
+      MCC = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}}
+  \end{equation}
+
+  
+  \item \textbf{Speed Score (SS)}: questa metrica \`e stata creata ed utilizzata appositamente per analizzare le performance dei nostri modelli sui dataset usati nel lavoro di Tesi. Lo scopo di questa metrica \`e quello di misurare la velocit\`a con cui il modello rileva l'anomalia. Ovviamente nell'Anomaly Detection \`e molto importante che le anomalie vengano rilevate nel minor tempo possibile. Per comprendere la formula del SS basta sapere che le anomalie sono sempre presenti per 5 istanti di tempo (5 secondi), ovvero 5 righe del dataset (la descrizione del dataset nel dettaglio \`e presente nel Capitolo 3). La formula per lo speed score \`e una somma pesata delle frequenze di rilevamento con decrescita quadratica e non lineare, per dare maggiore importanza alle rilevazioni nei primi istanti di tempo, diviso il totale delle anomalie rilevate.
+  
+    \begin{equation}
+      SS = \frac{x_0 \cdot 1 + x_1 \cdot 0.8^2 + x_2 \cdot 0.6^2 + x_3 \cdot 0.4^2 + x_4 \cdot 0.2^2}{TotaleAnomalie}
+    \end{equation}
+
+    Con $x_0, x_1, x_2, x_3, x_4$ che indicano rispettivamente il numero di anomalie rilevata al primo, secondo, terzo, quarto e quinto istante di tempo.
+\end{itemize}
+
+\vspace{1.5cm}
+
+Riprendiamo per un momento il problema degli unbalanced datasets. Questo problema avviene quando, in una classificazione binaria ad esempio,la frequenza di una delle due etichette risulta sbilanciata rispetto all'altra, ovvero una delle due etichette risulta molto pi\`u frequente nel dataset rispetto all'altra. Per comprendere al meglio il problema facciamo un esempio che risalti gli aspetti critici degli unbalanced datasets. Supponiamo di avere un dataset dove il 95\% dei dati \`e etichettato come 'normale', mentre il restante 5\% \`e etichettato come 'anomalia'. Se avessimo un modello chiamato \textit{dumb model} che classifica come 'normale' tutti i dati in input, avrebbe un'ACC del 95\% sul nostro dataset. Se prendessimo l'ACC come metrica di riferimento, il nostro dumb model sembrerebbe un ottimo classificatore di anomalie, quando a stento potremmo definirlo classificatore. Abbiamo preso quindi l'MCC come metrica di riferimento perch\'e molto pi\`u robusta, non risentendo degli effetti dei set di dati sbilanciati.
+    
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Balanced_Unbalanced_Dataset.png}
+    \caption{Balanced e Unbalanced Datasets}
+    \label{fig:enter-label}
+\end{figure}
+
+\vspace{1cm}
+
+\section{Anomaly Detection}
+L'\textit{Anomaly Detection} (o \textit{rilevamento di anomalie} in italiano) consiste nella rilevazione di eventi rari che non rientrano nella definizione di comportamento normale dei dati. Il rilevamento di anomalie \`e particolarmente importante nel settore della sicurezza informatica, ma anche nei settori quali finanza, medicina e molti altri ancora. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{anomalie.png}
+    \caption{Esempio Anomalia}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Un tempo chi si occupava di anomaly detection era solito eseaminare manualmente i dati, alla ricerca di comportamenti fuori dal normale, spesso non trovando le cause principali delle anomalie. Ad oggi il rilevamento di anomalie si basa quasi totalmente sul machine learning. Per definizione le anomalie sono eventi rari e quindi avremo a che fare spesso con dataset sbilanciati, con maggior presenza di dati etichettati come 'normali' rispetto a quelli etichettati come 'anomalie'.
+Le 3 categorie principali di tecniche di anomaly detection sono \cite{anomaly} :
+
+\begin{itemize}
+
+  \item \textbf{Anomaly Detection Supervisionata}: richiedono un set di dati etichettato in due classi, 'normale' e 'anomalia', e implicano l'addestramento di un classificatore. \`E il caso preso in analisi nel presente lavoro di Tesi.
+  
+  \item \textbf{Anomaly Detection Semi-Supervisionata}: richiedono che una porzione dei dati sia etichettata.
+
+  \item \textbf{Anomaly Detection Non Supervisionata}: i dati non sono etichettati e sono sicuramente le tecniche pi\`u diffuse oggigiorno.
+
+  
+    
+\end{itemize}
+
+\section{Time Series}
+Il tempo \`e una variabile fondamentale per fare delle previsioni sul futuro. Per introdurre questo fattore nei nostri modelli ricorriamo alle \textit{Time Series}(o \textit{serie storiche} in italiano), che definiamo come un insieme di osservazioni ordinate rispetto al tempo \cite{time_series}. L'analisi delle serie storiche non coincide meramente con l'atto di raccogliere e analizzare dati nel tempo. Ci\`o che contraddistingue una serie strorica da altri tipi di dati \`e che in una serie storica \`e possibile vedere come le variabili o features cambino nel tempo. Il tempo \`e una variabile cruciale e fornisce delle informazioni aggiuntive per i modelli.
+Le serie storiche vengono solitamente analizzate con modelli specifici per \textit{time series forecasting}, che consiste nell'utilizzare un modello per predire valori futuri basandosi sui valori precedentemente osservati , come ad esempio il modello ARIMA. In letteratura, difficilmente vengono utilizzati algoritmi di ML come Random Forest o XGBoost per l'analisi di serie storiche \cite{time_series_link}. Quello che ci siamo proposti in questo lavoro di Tesi \`e stato unire un problema di classificazione binaria (Anomaly Detection Supervisionata) con un approccio time series per dare maggiori informazioni ai modelli in fase di training, aspettandoci un miglioramento nelle performance dei modelli stessi.
+
+ \vspace{-0.5cm}
+ \vspace{-0.3cm}
