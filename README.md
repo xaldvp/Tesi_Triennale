@@ -5,10 +5,14 @@ Nell‘era in cui viviamo l‘analisi dei dati riveste un ruolo cruciale in molt
 
 ## Conclusioni
 L’obiettivo del presente lavoro di Tesi è stato quello di esplorare degli approcci time series nel campo dell’anomaly detection e valutare i potenziali benefici dell’applicazione di tali approcci. L’indagine sperimentale ha portato ad ottimi risultati, rivelando che un approccio time series risulta essere molto più efficace di un approccio classico all’analisi dei dati. In particolare possiamo concludere che:
-• Un approccio time series determina un aumento delle performance dei modelli. In particolare, si ha un ottimo aumento dei valori di MCC e un error rate più che dimezzato. Tra tutti gli approcci analizzati, l’approccio time series con differenze risulta essere il migliore.
-• La validità dei risultati ottenuti vale anche per istanze diverse del problema, come è stato verificato con il dataset my-all3, tenendo però in considerazione che la generalità dei modelli è stata testata usando un feature set limitato e sottoposto ad operazioni di preprocessing.
-• L’ampiezza della finestra temporale è il parametro da ottimizzare. Una maggiore ampiezza garantisce più informazioni in fase di addestramento dei modelli portando a performance migliori, a discapito però di un maggior numero di features e quindi di un maggior costo computazionale.
-• L’introduzione di una metrica come lo Speed Score (SS) nella valutazione di anomaly detectors può essere un buon indice da affiancare a metriche più robuste, come l’MCC.
+###
+Un approccio time series determina un aumento delle performance dei modelli. In particolare, si ha un ottimo aumento dei valori di MCC e un error rate più che dimezzato. Tra tutti gli approcci analizzati, l’approccio time series con differenze risulta essere il migliore.
+###
+La validità dei risultati ottenuti vale anche per istanze diverse del problema, come è stato verificato con il dataset my-all3, tenendo però in considerazione che la generalità dei modelli è stata testata usando un feature set limitato e sottoposto ad operazioni di preprocessing.
+###
+L’ampiezza della finestra temporale è il parametro da ottimizzare. Una maggiore ampiezza garantisce più informazioni in fase di addestramento dei modelli portando a performance migliori, a discapito però di un maggior numero di features e quindi di un maggior costo computazionale.
+###
+L’introduzione di una metrica come lo Speed Score (SS) nella valutazione di anomaly detectors può essere un buon indice da affiancare a metriche più robuste, come l’MCC.
 
 
 In conclusione, un approccio time series si è dimostrato essere una valida, ma soprattutto migliore, alternativa all’approccio classico all’analisi dei dati nell’ambito dell’anomaly detection.
