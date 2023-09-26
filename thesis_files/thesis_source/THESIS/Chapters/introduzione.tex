@@ -1,0 +1,32 @@
+\chapter{Introduzione}
+
+\medskip
+
+Nell`era in cui viviamo l`analisi dei dati riveste un ruolo cruciale in molti settori della nostra societ\`a.
+In questo contesto il Machine Learning si \`e dimostrato un potente strumento per estrarre informazioni utili e conoscenza da dati complessi e voluminosi. 
+Il \textit{Machine Learning (ML)} \`e un sottoinsieme dell'intelligenza artificiale (AI) che si occupa di creare sistemi che apprendono e migliorano le proprie performance in base ai dati che utilizzano. L'implementazione di algoritmi di ML su dispositivi IoT ed edge risulta ancora in uno stato di sviluppo incompleto, rappresentando un'area di ricerca aperta \cite{zoppi}. L'uso di algoritmi di ML su questi dispositivi pu\`o servire a renderli consapevoli del proprio comportamento, ad esempio attraverso l'uso di rilevatori di anomalie, che permettano ai dispositivi di capire quando si ha un comportamento anomalo, agendo di conseguenza in caso di attacco o intrusione. In particolare, il presente lavoro di Tesi fa riferimento al lavoro di ricerca qui citato \cite{zoppi}, dove sono stati monitorati degli indicatori di performance da un dispositivo chiamato ARANCINO, che \`e il nome commerciale per una famiglia di schede IoT e embedded che risiedono sull'omonima architettura. Dal sistema di monitoraggio utilizzato sono stati restituiti dei dati tabulari, ovvero un insieme di righe (osservazioni del set di dati) e di colonne (\textit{features}, in questo caso indicatori di performance), ordinati rispetto al tempo. Lo scopo del lavoro di Tesi \`e stato confrontare l'approccio classico all'analisi dei dati con un approccio time series. 
+Una \textit{time series} \cite{time_series} pu\`o essere definita come un insieme di osservazioni ordinate rispetto al tempo. La differenza sostanziale tra i due approcci \`e che con un approccio time series si hanno informazioni non solo sull`istante di tempo corrente, ma anche su un numero di istanti di tempo precedenti scelto arbitrariamente.
+Il fine ultimo del presente lavoro di Tesi \`e stato quello di comparare le performance di 4 algoritmi di machine learning in condizioni diverse: Logistic Regression, Linear Discriminant Analysis, Random Forest, XGBoost.
+Le condizioni diverse sopracitate sono state date dall'addestramento dei modelli su set di dati differenti in base all'approccio utilizzato, classico o time series.
+L'analisi sperimentale si \`e basata sull'analisi di dati provenienti da dispositvi ARANCINO e si \`e voluto indagare su come un approccio time series possa migliorare o meno le performance dei modelli rispetto all'approccio classico, avendo a dispozione informazioni anche su una finestra di istanti di tempo precedenti e non solo sull'istante di tempo corrente, quindi pi\`u dati disponibili durante l`apprendimento. 
+Le principali conclusioni del lavoro di Tesi indicano come l'utilizzo di un approccio time series porti a un significativo miglioramento delle prestazioni dei modelli, con conseguente maggiore efficacia nella rilevazione di anomalie.
+
+\vspace{1cm}
+
+Il lavoro \`e organizzato nel seguente modo:
+\begin{itemize}
+
+  \item Capitolo 2: fornisce una panoramica su Machine Learning, Anomaly Detection e Time Series
+  
+  \item Capitolo 3: descrive le metodologie e le strategie utilizzate nel lavoro di Tesi
+
+  \item Capitolo 4: analisi dei risultati ottenuti
+
+  \item Capitolo 5: conclusioni della Tesi
+
+  \item Appendice A: codice sviluppato e accesso al link GitHub
+  
+\end{itemize}
+
+\vspace{-0.5cm}
+\vspace{-0.3cm}

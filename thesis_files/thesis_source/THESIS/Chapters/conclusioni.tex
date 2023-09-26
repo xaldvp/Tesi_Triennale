@@ -1,0 +1,22 @@
+\chapter{Conclusioni}
+
+\medskip
+
+L'obiettivo del presente lavoro di Tesi \`e stato quello di esplorare degli approcci time series nel campo dell'anomaly detection e valutare i potenziali benefici dell'applicazione di tali approcci. L'indagine sperimentale ha portato ad ottimi risultati, rivelando che un approccio time series risulta essere molto pi\`u efficace di un approccio classico all'analisi dei dati. In particolare possiamo concludere che:
+
+\begin{itemize}
+
+  \item Un approccio time series determina un aumento delle performance dei modelli. In particolare, si ha un ottimo aumento dei valori di MCC e un error rate pi\`u che dimezzato. Tra tutti gli approcci analizzati, l'approccio time series con differenze risulta essere il migliore.
+
+  \item La validit\`a dei risultati ottenuti vale anche per istanze diverse del problema, come \`e stato verificato con il dataset \textit{my-all3}, tenendo per\`o in considerazione che la generalit\`a dei modelli \`e stata testata usando un feature set limitato e sottoposto ad operazioni di preprocessing.
+
+  \item L'ampiezza della finestra temporale \`e il parametro da ottimizzare. Una maggiore ampiezza garantisce pi\`u informazioni in fase di addestramento dei modelli portando a performance migliori, a discapito per\`o di un maggior numero di features e quindi di un maggior costo computazionale.
+
+  \item L'introduzione di una metrica come lo Speed Score (SS) nella valutazione di anomaly detectors pu\`o essere un buon indice da affiancare a metriche pi\`u robuste, come l'MCC.
+    
+\end{itemize}
+
+In conclusione, un approccio time series si \`e dimostrato essere una valida, ma soprattutto migliore, alternativa all'approccio classico all'analisi dei dati nell'ambito dell'anomaly detection.
+
+ \vspace{-0.5cm}
+ \vspace{-0.3cm}
