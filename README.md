@@ -1,87 +1,14 @@
 # Tesi
 
-## Preprocessing
+## Introduzione
+Nell‘era in cui viviamo l‘analisi dei dati riveste un ruolo cruciale in molti settori della nostra società. In questo contesto il Machine Learning si è dimostrato un potente strumento per estrarre informazioni utili e conoscenza da dati complessi e voluminosi. Il Machine Learning (ML) è un sottoinsieme dell’intelligenza artificiale (AI) che si occupa di creare sistemi che apprendono e migliorano le proprie performance in base ai dati che utilizzano. L’implementazione di algoritmi di ML su dispositivi IoT ed edge risulta ancora in uno stato di sviluppo incompleto, rappresentando un’area di ricerca aperta. L’uso di algoritmi di ML su questi dispositivi può servire a renderli consapevoli del proprio comportamento, ad esempio attraverso l’uso di rilevatori di anomalie, che permettano ai dispositivi di capire quando si ha un comportamento anomalo, agendo di conseguenza in caso di attacco o intrusione. In particolare, il presente lavoro di Tesi fa riferimento al lavoro di ricerca qui citato, dove sono stati monitorati degli indicatori di performance da un dispositivo chiamato ARANCINO, che è il nome commerciale per una famiglia di schede IoT e embedded che risiedono sull’omonima architettura. Dal sistema di monitoraggio utilizzato sono stati restituiti dei dati tabulari, ovvero un insieme di righe (osservazioni del set di dati) e di colonne (features, in questo caso indicatori di performance), ordinati rispetto al tempo. Lo scopo del lavoro di Tesi è stato confrontare l’approccio classico all’analisi dei dati con un approccio time series. Una time series può essere definita come un insieme di osservazioni ordinate rispetto al tempo. La differenza sostanziale tra i due approcci è che con un approccio time series si hanno informazioni non solo sull‘istante di tempo corrente, ma anche su un numero di istanti di tempo precedenti scelto arbitrariamente. Il fine ultimo del presente lavoro di Tesi è stato quello di comparare le performance di 4 algoritmi di machine learning in condizioni diver- se: Logistic Regression, Linear Discriminant Analysis, Random Forest, XGBoost. Le condizioni diverse sopracitate sono state date dall’addestramento dei modelli su set di dati differenti in base all’approccio utilizzato, classico o time series. L’analisi sperimentale si è basata sull’analisi di dati provenienti da dispositvi ARANCINO e si è voluto indagare su come un approccio time series possa migliorare o meno le performance dei modelli rispetto all’approccio classico, avendo a dispozione informazioni anche su una finestra di istanti di tempo precedenti e non solo sull’istante di tempo corrente, quindi più dati disponibili durante l‘apprendimento. Le principali conclusioni del lavoro di Tesi indicano come l’utilizzo di un approccio time series porti a un significativo miglioramento delle prestazioni dei modelli, con conseguente maggiore efficacia nella rilevazione di anomalie.
 
-Le operazioni di preprocessing effettuate sono state:
-1) Eliminazione delle feature costanti
-2) Trasformato le diverse etichette delle anomalie tutte in 'anomaly'
-3) Traformato 'normal' in 0 e 'anomaly' in 1
-4) Divisione delle colonne in Numeriche e Categoriche e trasformate rispettivamente con uno Scaler (standard scaler) e un Encoder (one hot encoder)
-
-## Training
-
-È stato eseguito il training di 3 modelli: LogisticRegression, RandomForest, XGB.
-Gli approcci usati sono stati 3: Classico, Time Series con Differenze, Time Series con Media Mobile (MA).
-Per un totale di 9 modelli.
-
-## MCC, Accuracy
-
-Per ogni modello è stato valutato e salvato in un dictionary il valore dell'MCC e dell'accuracy.
-
-## Speed Score
-
-Per ogni modello è stato calcolato uno score per valutare la velocità di riconoscimento delle anomalie da parte dei modelli. 
-Lo score è stato calcolato come media pesata delle frequenze di rilevamento (decrescita quadratica).
-Anche in questo caso lo score è stato salvato in un dictionary.
-
-## MCC, Accuracy, Speed Score Progression
-
-Tramite matplotlib è stato graficato l'andamento per ogni modello dell'MCC, dell'accuracy e dello speed score confrontati con i 3 approcci differenti.
-
-## all3
-
-Infine sono state valutate le performance del modello (MCC) su un dataset diverso (all3) per verificare la robustezza dei modelli.
-È stato fatto un grafico per comparare l'MCC sul test set originale e l'MCC su all3.
-
-## Bozza Conclusioni
-### With/Without Unreliable Features
+## Conclusioni
+L’obiettivo del presente lavoro di Tesi è stato quello di esplorare degli approcci time series nel campo dell’anomaly detection e valutare i potenziali benefici dell’applicazione di tali approcci. L’indagine sperimentale ha portato ad ottimi risultati, rivelando che un approccio time series risulta essere molto più efficace di un approccio classico all’analisi dei dati. In particolare possiamo concludere che:
+• Un approccio time series determina un aumento delle performance dei modelli. In particolare, si ha un ottimo aumento dei valori di MCC e un error rate più che dimezzato. Tra tutti gli approcci analizzati, l’approccio time series con differenze risulta essere il migliore.
+• La validità dei risultati ottenuti vale anche per istanze diverse del problema, come è stato verificato con il dataset my-all3, tenendo però in considerazione che la generalità dei modelli è stata testata usando un feature set limitato e sottoposto ad operazioni di preprocessing.
+• L’ampiezza della finestra temporale è il parametro da ottimizzare. Una maggiore ampiezza garantisce più informazioni in fase di addestramento dei modelli portando a performance migliori, a discapito però di un maggior numero di features e quindi di un maggior costo computazionale.
+• L’introduzione di una metrica come lo Speed Score (SS) nella valutazione di anomaly detectors può essere un buon indice da affiancare a metriche più robuste, come l’MCC.
 
 
-XGB= grande differenza (18 punti)  
-
-
-Logistic= non grande differenza (6 punti)  
-
-
-Random Forest= pressoché nessuna differenza, le features sono molto simili cambia un po’ l’ordine 
-
-
-LDA= grande differenza (14 punti)  
-
-
-
-Commento: sono molte features, io ho guardato le prime 20 ma noto che massimo dopo le prime 5 c’è un andamento asintotico dell’importanza delle features \n
-
-
-
-### MCC & Error Rate
-Shuffle=True/False: i valori di MCC e Error Rate sono di gran lunga migliori per shuffle=True, soprattutto negli approcci Classic e TS-MA ci sono le maggiori differenze.
-
-Con shuffle=False:
-
-
-L'andamento in generale dell' MCC in ordinte crescente è: Classic, TS-MA, TS-Diff.
-
-
-L'error rate è decisamente più basso con l'approccio TS-Diff.
-
-
-L'error rate con l'approccio TS-MA è sempre minore, o alle volte uguale, all'error rate dell'approccio Classic (a parte nella Logistic Regression in cui si ha un valore maggiore di error rate nell'approccio TS-MA rispetto all'approccio classico).
-
-
-L'error rate migliore si ottiene sempre con il modello XGBoost.
-
-
-### MCC Comparison Uni-All3
-
-ATTENZIONE: grande modifica rispetto all'altra volta.
-
-Cambiando il dataset All3 (escludendo quindi i dati X_train usati per addestrare i modelli su Uni) i modelli si dimostrano molto meno robusti su All3, come effettivamente ci saremmo potuti aspettare. La scorsa volta alcune volte l'MCC sul dataset All3 era maggiore che su quello di Uni. Con la modifica sul dataset All3 l'andamento è chiaro: meno robustezza dei modelli su All3 rispetto ad Uni. Cosa importante è che l'andamento dell'MCC è sempre lo stesso, in ordine crescente: Classic, TS-MA, TS-Diff.
-
-### MCC Comparison With/Without Unreliable su All3
-Fatto solo per i modelli classic. A parte per Random Forest, in cui i valori di MCC con o senza feature inaffidabili non cambia, i valori di MCC sono sempre più alti nei modelli addestrati senza feature inaffidabili.
-
-
-### Speed Score
-Tra i modelli con shuffle=False con finestre temporali differenti non ci sono grandi differenze nei valori di score. La tendenza di base segue quella dell'MCC, in ordine crescente: Classic, TS-MA, TS-Diff. Piccola eccezione il modello LDA ha una tendenza diversa e anche la Logistic Regression con win=2.
-
+In conclusione, un approccio time series si è dimostrato essere una valida, ma soprattutto migliore, alternativa all’approccio classico all’analisi dei dati nell’ambito dell’anomaly detection.
